@@ -1,0 +1,87 @@
+/* fonts usadas no projeto! não apagar */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+
+/* configuração do header*/
+
+header {
+    background-color: #440334;
+}
+
+#button-nav {
+    height: 45px;
+    width: 124px;
+    border: 0px;
+    background-color: #EC0868;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: large;
+    margin-left: 5%;
+
+
+
+}
+/* configurações do nav*/
+nav {
+    background-color: #EC0868;
+    justify-content: center;
+    align-items: center;
+    
+}
+/*area icones de rede social*/
+#logo {
+    display: block;
+    height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+#iconh {
+    height: 32px;
+    margin: 10px;
+    
+}
+
+
+#iconu {
+    height: 32px;
+    margin: 10px;
+    margin-left: 55%;
+}
+
+
+#iconf {
+    height: 32px;
+    margin: 10px;
+    margin-left: 18%;
+}
+
+/* configurações do footer */
+
+
+#footer-sociais {
+    margin-top: 10px;
+    background-image: url(/app/public/img/fundo.png);
+    
+    
+  }
+  
+  footer {
+    background-color: #EC0868;
+    height: 400px;
+  }
+  
+  body footer h2 {
+    font-size: large;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    color: white;
+    margin-top: 40px;
+    margin-left: 20px;
+  }
+  
+  /*configuração da linha inferior azul dos links*/
+  a {
+    text-decoration: none;
+   }

@@ -12,6 +12,10 @@ router.get("/", function(req, res){
     res.render("pages/home")}
 );
 
+router.get("/home", function(req, res){
+    res.render("pages/home")}
+);
+
 router.get("/cadastro", function(req, res){
     res.render("pages/cadastro", {retorno: null, erros: null})}
 );

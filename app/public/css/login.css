@@ -1,6 +1,6 @@
 /*configuração do login - cadastro*/
 main {
-  background-image: url(/app/public/img/fundo.png);
+  background-image: url(/img/fundo.png);
   padding-top: 30px;
   padding-bottom: 30px;
 }

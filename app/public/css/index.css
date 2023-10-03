@@ -6,7 +6,7 @@
 
 #artigos {
     margin-top: 20px;
-    background-image: url(/app/public/img/fundo.png);
+    background-image: url(img/fundo.png);
     height: 585px;
     width: auto;
 }

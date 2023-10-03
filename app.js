@@ -2,12 +2,12 @@ const express = require("express");
 const app = express();
 const port = 3024
 
-app.use(express.static("app/public"));
+app.use(express.static('app/public'));
 
-app.set("viwe engine", "ejs");
-app.set("views", "./app/views");
+app.set('view engine', 'ejs');
+app.set('views', './app/views');
 
-var rotas = require("./app/routes/router");
+var rotas = require('./app/routes/router');
 app.use("/", rotas);
 
 app.listen(port, () =>{

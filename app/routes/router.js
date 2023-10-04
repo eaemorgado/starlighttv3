@@ -40,8 +40,8 @@ router.get("/noticias", function(req, res){
     res.render("pages/noticias", {retorno: null, erros: null})}
 );
 
-router.get("/restaurante", function(req, res){
-    res.render("pages/restaurante", {retorno: null, erros: null})}
+router.get("/restaurantes", function(req, res){
+    res.render("pages/restaurantes", {retorno: null, erros: null})}
 );
 
 module.exports = router;

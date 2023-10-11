@@ -105,7 +105,8 @@ body main section hr {
 
 #button-carrossel {
     color: #440334;
-    margin-left: 150px;
+    display: flex;
+    justify-content: center ;
 }
 
 /* area de chat */

@@ -26,6 +26,8 @@ nav {
     background-color: #EC0868;
     justify-content: center;
     align-items: center;
+    display: flex;
+    margin-left: -5%;
     
 }
 /*area icones de rede social*/

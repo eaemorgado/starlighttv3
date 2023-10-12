@@ -30,18 +30,33 @@
     </header>
     
     <main>
-          <div id="carrossel">
-            <img src="img/solidariedade.jpeg" alt="" id="img-carrossel">
-            <div id="button-carrossel">
-              <input type="radio" name="slide" checked >
-              <input type="radio" name="slide">
-              <input type="radio" name="slide">
-              <input type="radio" name="slide">
-            </div>
-            
 
+      <div id="body-carrossel">
+        <div class="carousel">
+          <input type="radio" name="slide" id="slide1" checked>
+          <input type="radio" name="slide" id="slide2">
+          <input type="radio" name="slide" id="slide3">
+          
+          <div class="carousel-slides">
+              <div class="carousel-slide">
+                  <img src="img/evento1.jpg" alt="Imagem 1">
+              </div>
+              <div class="carousel-slide">
+                  <img src="img/evento1.jpg" alt="Imagem 2">
+              </div>
+              <div class="carousel-slide">
+                  <img src="img/evento1.jpg" alt="Imagem 3">
+              </div>
           </div>
-
+  
+          <div class="carousel-navigation">
+              <label for="slide1"></label>
+              <label for="slide2"></label>
+              <label for="slide3"></label>
+          </div>
+        </div>
+      </div>
+      
 
           <section id="artigos">
             <div id="barra"><hr></div>

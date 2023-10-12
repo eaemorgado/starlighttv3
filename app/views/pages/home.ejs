@@ -81,23 +81,19 @@
             </a>-->
         
           </section>
-
-          <section id="comentarios">
-            <div id="coment">
-                <img src="img/user.png" alt="" id="icon-user">
-                <h3 id="user-name">User_1234</h3>
-                <p id="text-coment">Adoreii, muito bom para achar um lugar para sair a noite! </p>
+            <div id="comments">
+              <h2>Comentários</h2>
+              <ul id="comment-list">
+                  <!-- Os comentários serão exibidos aqui -->
+              </ul>
+              <form id="comment-form">
+                  <input type="text" id="name" placeholder="Seu nome" required>
+                  <textarea id="comment" placeholder="Seu comentário" required></textarea>
+                  <button type="submit" id="button-comment">Enviar</button>
+              </form>
             </div>
-            <h3 id="mais-comentarios">Mais comentarios ></h3>
-
-          <div class="add-comentario"> 
-            <form action="/pagina-processa-dados-do-form" method="post">
-                <h3 id="txt-comentario">Comente aqui:</h3>
-                <input type="text" id="adicionar-comentario">
-          </div> 
-
-            </form>
           </section>
+
     </main>
     <footer>
       <div id="footer-sociais">
@@ -116,6 +112,6 @@
       
     </footer>
 
-    
+    <script src="js/script.js"></script>
 </body>
 </html>

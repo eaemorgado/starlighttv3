@@ -30,18 +30,33 @@
     </header>
     
     <main>
-          <div id="carrossel">
-            <img src="img/solidariedade.jpeg" alt="" id="img-carrossel">
-            <div id="button-carrossel">
-              <input type="radio" name="slide" checked >
-              <input type="radio" name="slide">
-              <input type="radio" name="slide">
-              <input type="radio" name="slide">
-            </div>
-            
 
+      <div id="body-carrossel">
+        <div class="carousel">
+          <input type="radio" name="slide" id="slide1" checked>
+          <input type="radio" name="slide" id="slide2">
+          <input type="radio" name="slide" id="slide3">
+          
+          <div class="carousel-slides">
+              <div class="carousel-slide">
+                  <img src="img/evento1.jpg" alt="Imagem 1">
+              </div>
+              <div class="carousel-slide">
+                  <img src="img/evento1.jpg" alt="Imagem 2">
+              </div>
+              <div class="carousel-slide">
+                  <img src="img/evento1.jpg" alt="Imagem 3">
+              </div>
           </div>
-
+  
+          <div class="carousel-navigation">
+              <label for="slide1"></label>
+              <label for="slide2"></label>
+              <label for="slide3"></label>
+          </div>
+        </div>
+      </div>
+      
 
           <section id="artigos">
             <div id="barra"><hr></div>
@@ -81,23 +96,19 @@
             </a>-->
         
           </section>
-
-          <section id="comentarios">
-            <div id="coment">
-                <img src="img/user.png" alt="" id="icon-user">
-                <h3 id="user-name">User_1234</h3>
-                <p id="text-coment">Adoreii, muito bom para achar um lugar para sair a noite! </p>
+            <div id="comments">
+              <h2>Comentários</h2>
+              <ul id="comment-list">
+                  <!-- Os comentários serão exibidos aqui -->
+              </ul>
+              <form id="comment-form">
+                  <input type="text" id="name" placeholder="Seu nome" required>
+                  <textarea id="comment" placeholder="Seu comentário" required></textarea>
+                  <button type="submit" id="button-comment">Enviar</button>
+              </form>
             </div>
-            <h3 id="mais-comentarios">Mais comentarios ></h3>
-
-          <div class="add-comentario"> 
-            <form action="/pagina-processa-dados-do-form" method="post">
-                <h3 id="txt-comentario">Comente aqui:</h3>
-                <input type="text" id="adicionar-comentario">
-          </div> 
-
-            </form>
           </section>
+
     </main>
     <footer>
       <div id="footer-sociais">
@@ -116,6 +127,6 @@
       
     </footer>
 
-    
+    <script src="js/script.js"></script>
 </body>
 </html>

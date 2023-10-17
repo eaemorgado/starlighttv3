@@ -44,4 +44,26 @@ router.get("/restaurantes", function(req, res){
     res.render("pages/restaurantes", {retorno: null, erros: null})}
 );
 
+router.get("/sobre", function(req, res){
+    res.render("pages/sobre", {retorno: null, erros: null})}
+);
+
+router.get("/loja", function(req, res){
+    res.render("pages/loja", {retorno: null, erros: null})}
+);
+
+router.get("/comoajudar", function(req, res){
+    res.render("pages/comoajudar", {retorno: null, erros: null})}
+);
+
+router.get("/formadd", function(req, res){
+    res.render("pages/formadd", {retorno: null, erros: null})}
+);
+
+router.post (
+    "/adicionar"
+
+
+)
+
 module.exports = router;

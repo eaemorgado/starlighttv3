@@ -37,7 +37,9 @@ nav {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+    
 }
+
 
 #iconh {
     height: 32px;
@@ -45,6 +47,10 @@ nav {
     
 }
 
+#iconh:hover {
+    transform: scale(110%);
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
 
 #iconu {
     height: 32px;
@@ -52,11 +58,22 @@ nav {
     margin-left: 55%;
 }
 
+#iconu:hover {
+    transform: scale(110%);
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 
 #iconf {
     height: 32px;
     margin: 10px;
     margin-left: 18%;
+    
+}
+
+#iconf:hover {
+    transform: scale(110%);
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 /* configurações do footer */
@@ -82,6 +99,7 @@ nav {
     margin-top: 40px;
     margin-left: 20px;
   }
+
   
   /*configuração da linha inferior azul dos links*/
   a {

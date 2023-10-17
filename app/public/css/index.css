@@ -158,6 +158,11 @@
     font-weight: 1000;
 }
 
+#noticias:hover {
+    transform: scale(102%);
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 #restaurantes {
     color: rgb(204, 74, 13);
     font-size: x-large;
@@ -168,6 +173,11 @@
     padding: 10px;
     text-align: center;
     font-weight: 1000;
+}
+
+#restaurantes:hover {
+    transform: scale(102%);
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 #eventos {
@@ -182,6 +192,11 @@
     font-weight: 1000;
 }
 
+#eventos:hover {
+    transform: scale(102%);
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
     #parcerias {
     color: rgb(112, 13, 204);
     font-size: x-large;
@@ -192,6 +207,11 @@
     padding: 10px;
     text-align: center;
     font-weight: 1000;
+}
+
+#parcerias:hover {
+    transform: scale(102%);
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 

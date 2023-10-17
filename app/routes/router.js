@@ -1,4 +1,5 @@
 var express = require("express");
+const { body } = require("express-validator");
 var router = express.Router();
 
 function myMiddleware(req, res, next) {
@@ -61,9 +62,22 @@ router.get("/formadd", function(req, res){
 );
 
 router.post (
-    "/adicionar"
+    "/adicionar",
 
+    body("tnoticia").isLength({ min: 5, max: 25}),
+    body("nassunto").isLength({min: 10, max: 250}),
+    body("data").isDate(),
+    body("situacao").isNumeric(),
 
+    async function (req, res) {
+        var dadosForm = {
+            nome_noticia: req.body.tnoticia,
+            assunto_noticia: req.body.nassunto,
+            data_noticia: req.body.data,
+            situacao_noticia: req.body.situacao,
+            
+        }
+    }
 )
 
 module.exports = router;

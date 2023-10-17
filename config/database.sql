@@ -2,106 +2,79 @@ DROP DATABASE IF exists starlight ;
 CREATE DATABASE starlight;
 USE starlight;
 
-DROP TABLE IF EXISTS tipo_usuario;
-
 CREATE TABLE tipo_usuario (
-  id_tipo int(11) primary key,
-  tipo varchar(25) DEFAULT NULL,
-  descricao varchar(155) DEFAULT NULL,
-  status_tipo int DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  id_tipo_usuario INT PRIMARY KEY, 
+  tipo VARCHAR(25) NOT NULL,
+  descricao VARCHAR(155) NOT NULL,
+  status_tipo INT DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-DROP TABLE IF EXISTS usuario;
 
 CREATE TABLE usuario (
-  id int primary key,
-  nome varchar(45) NOT NULL,
-  user varchar(45) NOT NULL,
-  email varchar(60) NOT NULL,
-  senha varchar(50) NOT NULL,
-  confirmar varchar(50) NOT NULL,
-  tel varchar(14) DEFAULT NULL,
-  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  id_tipo int(11) foreign key 
+  id_usuario INT PRIMARY KEY, 
+  nome VARCHAR(45) NOT NULL,
+  usuario VARCHAR(45) NOT NULL,
+  email VARCHAR(60) NOT NULL,
+  senha VARCHAR(50) NOT NULL,
+  confirmar VARCHAR(50) NOT NULL,
+  tel VARCHAR(14),  
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  id_tipo INT, 
+  FOREIGN KEY (id_tipo) REFERENCES tipo_usuario(id_tipo_usuario) 
 );
-
-LOCK TABLES usuario WRITE;
-
-INSERT INTO usuario (id_usu, nome_usu, user_usu,email_usu, senha_usu, confirmar_usu,tel_usu, created_at_usu) VALUES
-();
 
 CREATE TABLE fornecedor (
-  id_fornecedor int primary key,
-  nome varchar(45) NOT NULL,
-  celular varchar(14) DEFAULT NULL,
-  empresa_IDempresa varchar(45) NOT NULL
-  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  id_tipo int(11) foreign key 
+   id_fornecedor INT PRIMARY KEY,
+   nome VARCHAR(45) NOT NULL,
+   celular VARCHAR(14),
+   empresa_IDempresa VARCHAR(45) NOT NULL,
+   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-LOCK TABLES fornecedor WRITE;
 
-INSERT INTO usuario (id_fornecedor,nome,celular,created_at_fornecedor) VALUES
 
 CREATE TABLE Produtos (
-  id_produtos int primary key,
-  categoria varchar(45) NOT NULL,
-  marca varchar(14) NOT NULL,
-  quantidade varchar(4500) NOT NULL
-  valor varchar(45) NOT NULL
-  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  id_tipo int(11) foreign key 
-)
+  id_produtos INT PRIMARY KEY,
+  categoria VARCHAR(45) NOT NULL,
+  marca VARCHAR(14) NOT NULL,
+  quantidade INT NOT NULL,
+  valor DECIMAL(10, 2) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
- INSERT INTO usuario (id_produtos,categoria,marca,quantidade,valor) VALUES
-
- LOCK TABLES Produtos WRITE;
 
 CREATE TABLE Noticia (
-  id_noticia int primary key,
-  data_hora varchar(45) NOT NULL,
-  fonte varchar(14) NOT NULL,
-  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  id_tipo int(11) foreign key 
-)
-
-INSERT INTO usuario (id_noticia,data_hora,fonte) VALUES
-
-LOCK TABLES Noticia WRITE;
+  id_noticia INT PRIMARY KEY, 
+  data_hora VARCHAR(45) NOT NULL,
+  fonte VARCHAR(14) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 CREATE TABLE restaurante (
-  id_restaurante int primary key,
-  endereço varchar(45) NOT NULL,
-  dono varchar(14) NOT NULL,
-  tema varchar(14) NOT NULL,
-  usuario_IDusuario varchar(45) NOT NULL
-  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  id_tipo int(11) foreign key 
-)
+  id_restaurante INT PRIMARY KEY,
+  endereço VARCHAR(45) NOT NULL, 
+  dono VARCHAR(14) NOT NULL,
+  tema VARCHAR(14) NOT NULL,
+  usuario_IDusuario VARCHAR(45) NOT NULL, 
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
-INSERT INTO usuario (id_restaurante,endereço,dono,tema,usuario_IDusuario) VALUES
-
-LOCK TABLES restaurante WRITE;
 
 CREATE TABLE avaliação (
-  id_avaliação int primary key,
-  data_hora varchar(45) NOT NULL,
-  dono varchar(14) NOT NULL,
-  usuario_IDusuario varchar (45) NOT NULL
-  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  id_tipo int(11) foreign key 
-)
+  id_avaliacao INT PRIMARY KEY, 
+  data_hora VARCHAR(45) NOT NULL,
+  dono VARCHAR(14) NOT NULL,
+  usuario_IDusuario VARCHAR(45) NOT NULL, 
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
-LOCK TABLES avaliação WRITE;
+
 
 CREATE TABLE eventos (
-  id_evento int primary key,
-  data_hora varchar(45) NOT NULL, 
-  localização varchar(14) NOT NULL,
-  atração varchar (45) NOT NULL
-  usuario_IDusuario varchar (45) NOT NULL
-  created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  id_tipo int(11) foreign key 
-)  
-
-LOCK TABLES eventos a WRITE;
+  id_evento INT PRIMARY KEY,
+  data_hora VARCHAR(45) NOT NULL, 
+  localizacao VARCHAR(14) NOT NULL, 
+  atracao VARCHAR(45) NOT NULL, 
+  usuario_IDusuario VARCHAR(45) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

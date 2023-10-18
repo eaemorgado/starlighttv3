@@ -61,6 +61,11 @@ router.get("/formadd", function(req, res){
     res.render("pages/formadd", {retorno: null, erros: null})}
 );
 
+
+router.get("/formenviado", function(req, res){
+    res.render("pages/formenviado", {retorno: null, erros: null})}
+);
+
 // router.post('/formadd', (req, res) => {
 //     res.redirect('/');
 // });

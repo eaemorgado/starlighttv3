@@ -2,43 +2,131 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 
+@media (min-width: 320px) and (max-width: 480px){ 
+    
+    #logo {
+        display: block;
+        height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        
+        
+    }
+
+    #button-nav {
+        height: 45px;
+        width: 100%;
+        border: 0px;
+        background-color: #EC0868;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-size: medium;
+        
+    
+    
+    
+    }
+    /* configurações do nav*/
+    nav {
+        background-color: #EC0868;
+        justify-content: space-around;
+        align-items: center;
+        display: flex;
+        margin-left: -5%;
+        
+        
+    }
+
+
+}
+
+@media (min-width: 481px) and (max-width: 700px){ 
+  
+    #logo {
+        display: block;
+        height: 70px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        
+        
+    }
+
+    #button-nav {
+        height: 45px;
+        width: 100%;
+        border: 0px;
+        background-color: #EC0868;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-size: medium;
+        
+    
+    
+    
+    }
+    /* configurações do nav*/
+    nav {
+        background-color: #EC0868;
+        justify-content: space-around;
+        align-items: center;
+        display: flex;
+        
+        
+    }
+
+
+}
+
+@media (min-width: 700px) { 
+ 
+    #logo {
+        display: block;
+        height: 70px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        
+        
+    }
+
+    #button-nav {
+        height: 45px;
+        width: 100%;
+        border: 0px;
+        background-color: #EC0868;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-size: medium;
+        
+    
+    
+    
+    }
+    /* configurações do nav*/
+    nav {
+        background-color: #EC0868;
+        justify-content: space-around;
+        align-items: center;
+        display: flex;
+        
+        
+    }
+
+}
+
 /* configuração do header*/
+
+
 
 header {
     background-color: #440334;
 }
 
-#button-nav {
-    height: 45px;
-    width: 124px;
-    border: 0px;
-    background-color: #EC0868;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: large;
-    margin-left: 5%;
 
-
-
-}
-/* configurações do nav*/
-nav {
-    background-color: #EC0868;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    margin-left: -5%;
-    
-}
 /*area icones de rede social*/
-#logo {
-    display: block;
-    height: 70px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    
-}
+
 
 
 #iconh {
@@ -55,7 +143,8 @@ nav {
 #iconu {
     height: 32px;
     margin: 10px;
-    margin-left: 55%;
+    right: 0;
+    position: absolute;
 }
 
 #iconu:hover {
@@ -67,7 +156,7 @@ nav {
 #iconf {
     height: 32px;
     margin: 10px;
-    margin-left: 18%;
+
     
 }
 
@@ -82,8 +171,8 @@ nav {
 #footer-sociais {
     margin-top: 10px;
     background-image: url(/img/fundo.png);
-    
-    
+    display: flex;
+    justify-content: space-around;
   }
   
   footer {

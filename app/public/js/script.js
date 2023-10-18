@@ -19,3 +19,26 @@ document.addEventListener('DOMContentLoaded', function() {
         commentInput.value = '';
     });
 });
+
+const carousel = document.getElementById("carousel");
+        const slides = document.querySelectorAll(".carousel-slide");
+
+        let currentIndex = 0;
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            carousel.style.transform = `translateX(${offset}%)`;
+        }
+
+        // Troca de slide automaticamente a cada 3 segundos
+        setInterval(nextSlide, 3000);
+
+        // Atualiza o carrossel quando a janela é redimensionada
+        window.addEventListener("resize", updateCarousel);
+
+        updateCarousel(); // Atualiza o carrossel quando a página é carregada

@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3024
+const bodyParser = require('body-parser')
 
 app.use(express.static('app/public'));
 
@@ -13,3 +14,5 @@ app.use("/", rotas);
 app.listen(port, () =>{
     console.log(`Site Online`)
 });
+
+app.use(bodyParser.urlencoded({ extended: false }));

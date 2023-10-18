@@ -61,23 +61,37 @@ router.get("/formadd", function(req, res){
     res.render("pages/formadd", {retorno: null, erros: null})}
 );
 
-router.post (
-    "/adicionar",
+// router.post('/formadd', (req, res) => {
+//     res.redirect('/');
+// });
 
-    body("tnoticia").isLength({ min: 5, max: 25}),
-    body("nassunto").isLength({min: 10, max: 250}),
-    body("data").isDate(),
-    body("situacao").isNumeric(),
+// application.get('/postagem/:id', (req, res) =>{
+//     res.render('/postagem');
+// });
 
-    async function (req, res) {
-        var dadosForm = {
-            nome_noticia: req.body.tnoticia,
-            assunto_noticia: req.body.nassunto,
-            data_noticia: req.body.data,
-            situacao_noticia: req.body.situacao,
-            
-        }
-    }
-)
+// app.get('editar-mensagem/:id', (req, res) =>{
+//     res.render('Editar postagem');
+// });
+
+// app.post('/atualizar-postagem/:id', (req, res) =>{
+//     res.redirect('/');
+// });
+
+// app.post('/excluir-postagem/:id', (req, res) =>{
+//     res.redirect('/')
+// })
+
+// app.post('/adicionar', (req, res) => {
+//     cont {titulo, conteudo} = req.body;
+    
+//     if (!titulo || !conteudo) {
+//         res.status(400).send('Título e conteúdo são obrigatórios.');
+//         return;
+
+//     }
+
+//     const postagem = {titulo, conteudo};
+    
+// })   
 
 module.exports = router;

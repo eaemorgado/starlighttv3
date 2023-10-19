@@ -1,6 +1,28 @@
 var express = require("express");
 const { body } = require("express-validator");
 var router = express.Router();
+var mysql = require("mysql");
+const bcrypt = require('bcrypt');
+
+
+const saltRounds = 10;
+const salt = bcrypt.genSaltSync(saltRounds);
+
+
+const db = mysql.createConnection({
+    host: "127.0.0.1",
+    user: "root",
+    password: "",
+    database: "starlight",
+    port: 3306
+  });
+
+  db.connect((err) => {
+    if (err) {
+      throw err;
+    }
+    console.log('Conectado ao MySQL');
+  });
 
 function myMiddleware(req, res, next) {
     // Your middleware logic here
@@ -8,6 +30,10 @@ function myMiddleware(req, res, next) {
   }
 
   router.use(myMiddleware);
+
+
+  
+  
 
 router.get("/", function(req, res){
     res.render("pages/home")}
@@ -66,6 +92,7 @@ router.get("/formenviado", function(req, res){
     res.render("pages/formenviado", {retorno: null, erros: null})}
 );
 
+
 // router.post('/formadd', (req, res) => {
 //     res.redirect('/');
 // });
@@ -98,5 +125,57 @@ router.get("/formenviado", function(req, res){
 //     const postagem = {titulo, conteudo};
     
 // })   
+
+// router.post("/cadastrar", function(req, res){
+//     var dadosForm = {
+//         email: req.body.email
+//     }.then(function(){
+//         res.render("pages/formenviado")
+//     }).catch(function(erro){
+//         res.send("Houve um erro: " + erro)
+//     })
+// });
+
+
+router.post("/cadastrar", function (req, res) {
+    
+    const dadosForm = {
+        nome: req.body.nome,
+        usuario: req.body.usuario,
+        email: req.body.email,
+        senha: req.body.senha,
+      
+    
+    };
+
+    const { email, senha } = req.body;
+
+    if (!email || !senha) {
+        return res.send('Por favor, preencha todos os campos.');
+      }
+    
+    const query = 'INSERT INTO usuarios (id, nome, usuario, email, senha) VALUES (?, ?, ?, ?, ?)';
+    const values = [null, dadosForm.nome, dadosForm.usuario, dadosForm.email, dadosForm.senha];
+
+
+    db.query(query, values, (err, result) => {
+        if (err) {
+          console.error('Erro ao inserir dados no banco de dados:', err);
+        } else {
+          console.log('Dados inseridos com sucesso!');
+        }
+      });
+
+
+    setTimeout(function () {
+      res.render("pages/formenviado", { email: dadosForm.email });
+    }, 1000); 
+  
+   
+    // catch(function (erro) {
+    //   res.send("Houve um erro: " + erro);
+    // });
+    console.log(dadosForm)
+  });
 
 module.exports = router;

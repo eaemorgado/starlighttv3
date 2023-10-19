@@ -23,44 +23,40 @@
         <hr>
     </header>
     <main>
-        <form action="/cadastro" method="post"> 
+        <form action="/cadastrar" method="post"> 
             <div class="area-login">   
 
                 <div class="nome">
-                    <input type="text" name="" id="id_usuario" value="Nome Completo" onfocus="this.value='';">
-                    <label for="E-mail"></label>
+                    <input type="text" name="nome" id="escrita" value="Nome Completo" onfocus="this.value='';">
+                    <label for="nome"></label>
                 </div>
 
                 <div class="numero">
-                    <input type="text" id="escrita" value="Confirmar Senha" onfocus="this.value='';">
-                    <label for="Numero de Telefone"></label>
+                    <input type="text" name="usuario" id="escrita" value="Usuario" onfocus="this.value='';">
+                    <label for="usuario"></label>
                 </div>
 
 
                 <div class="email">
-                    <input type="text" id="escrita" value="E-mail" onfocus="this.value='';">
+                    <input type="text" name="email" id="escrita" value="E-mail" onfocus="this.value='';">
                     <label for="E-mail"></label>
                 </div>
 
                 <div class="senha">
-                    <input type="text" id="escrita" value="Senha" onfocus="this.value='';">
+                    <input type="text" name="senha" id="escrita" value="Senha" onfocus="this.value='';">
                     <label for="Senha"></label>
                 </div>
 
-                <div class="confirmar-senha">
-                    <input type="text" id="escrita" value="ConfirmarSenha" onfocus="this.value='';">
-                    <label for="Confirmar senha"></label>
-                </div>
-                
-                <div class="termos">
+                <!-- <div class="termos">
                     <input type="checkbox" id="box">
                     <h2 id="senha-termos"> Concordo com os <a href="">termos de serviço</a>. </h2>
-                </div>
+                </div> -->
             
-                
-                <a href="/home"><input type="submit" value="Cadastrar" id="entrar"></a>
+                <button type="submit">Cadastrar</button>
 
-                <button id="button-social">
+                <!-- <input type="submit" value="Cadastrar" id="entrar"> -->
+
+                <!-- <button id="button-social">
                     <img src="img/google.png" alt="" id="icon">
                     <h3>Google</h3>
                 </button>
@@ -68,7 +64,7 @@
                 <button id="button-social-facebook">
                     <img src="img/facebook.png" alt="" id="icon">
                     <h3>Facebook</h3>
-                </button>
+                </button> -->
         
             </div>
         </form>

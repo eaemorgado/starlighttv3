@@ -23,22 +23,27 @@
     </header>
     <main>
         <div class="area-login">   
-            
             <h1 id="txt-login">Faça login ou cadastre-se</h1>
             <h3>Não tem uma conta?</h3>
             <a href="/cadastro"><h3>Inscreva-se</h3></a>
 
-            <div class="email">
-                <h3 id="txt-email">E-mail</h3>
-                <input type="text" id="escrita" value="" onfocus="this.value='';">
-                <label for="E-mail"></label>
-            </div>
+            <form action="/login" method="post">
+                <div class="email">
+                    <h3 id="txt-email">E-mail</h3>
+                    <input type="text" id="escrita" name="email" value="" onfocus="this.value='';">
+                    <label for="E-mail"></label>
+                </div>
+    
+                <div class="senha">
+                    <h3 id="txt-senha">Senha</h3>
+                    <input type="password" id="escrita" name="senha" onfocus="this.value='';">
+                    <label for="Senha"></label>
+                </div>
 
-            <div class="senha">
-                <h3 id="txt-senha">Senha</h3>
-                <input type="text" id="escrita" value="" onfocus="this.value='';">
-                <label for="Senha"></label>
-            </div>
+                <input type="submit" value="Entrar" id="entrar">
+            </form>
+            
+            
             
             <div class="termos">
                 <input type="checkbox" id="box">
@@ -48,7 +53,7 @@
 
         
             
-            <a href="/home"><input type="submit" value="Entrar" id="entrar"></a>
+            <input type="submit" value="Entrar" id="entrar">
     
         </div>
 

@@ -6,8 +6,30 @@ module.exports = class UsuarioDAL {
     
     findAll(){
         return new Promise((resolve, reject) => {
-            this.starlight.query("SELECT u.id, u.nome, u.email", function (error, elements){
+            this.starlight.query("SELECT id, nome, email", function (error, elements){
                 if (error){
+                    return reject(error);
+                }
+                return resolve(elements);
+            });
+        });
+    };
+
+    FindPage(pagina, total){
+        return new Promise((resolve, reject)=>{
+            this.starlight.query('SELECT * FROM usuarios limit '+ pagina + ', '+ total,  function(error, elements){
+                if(error){
+                    return reject(error);
+                }
+                return resolve(elements);
+            });
+        });
+    };
+
+    TotalReg(){
+        return new Promise((resolve, reject)=>{
+            this.starlight.query('SELECT count(*) total FROM usuarios ',  function(error, elements){
+                if(error){
                     return reject(error);
                 }
                 return resolve(elements);
@@ -28,7 +50,7 @@ module.exports = class UsuarioDAL {
 
     findID(id) {
         return new Promise((resolve, reject) => {
-            this.starlight.query("SELECT u.id, u.nome, u.senha, u.email, FROM usuarios u, tipo_usu t where u.status_usuario = ' and " + "u.tipo_usu = t.tipo_usu and u.id_usu = ?", [id], function(error, elements){
+            this.starlight.query("SELECT id, nome, senha, email, FROM usuarios", [id], function(error, elements){
                 if (error) {
                     return reject(error);
                 }

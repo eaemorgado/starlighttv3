@@ -24,7 +24,9 @@
     </header>
     <main>
         <form action="/cadastrar" method="post"> 
-            <div class="area-login">   
+            <div class="area-login">  
+                
+                <h1 id="txt-login">Cadastro</h1>
 
                 <div class="nome">
                     <input type="text" name="nome" id="escrita" value="Nome Completo" onfocus="this.value='';">
@@ -52,7 +54,7 @@
                     <h2 id="senha-termos"> Concordo com os <a href="">termos de serviço</a>. </h2>
                 </div> -->
             
-                <button type="submit">Cadastrar</button>
+                
 
                 <!-- <input type="submit" value="Cadastrar" id="entrar"> -->
 
@@ -65,6 +67,16 @@
                     <img src="img/facebook.png" alt="" id="icon">
                     <h3>Facebook</h3>
                 </button> -->
+                <a href="/politicapriv" id="politicaprivlink"><p id="txt-politica"> Ao se cadastrar você concorda com os termos de Politica e Privacidade!
+                </p></a>
+
+                <button type="submit" id="entrar">Cadastrar</button>
+
+                <p>Ja tem uma conta?</p>
+                <a href="/login">
+                    <input type="button" id="entrar" value="Logar">
+                </a>
+                
         
             </div>
         </form>

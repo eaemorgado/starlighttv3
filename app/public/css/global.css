@@ -194,3 +194,41 @@ header {
   a {
     text-decoration: none;
    }
+
+   #area-painel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   }
+
+   #button-painel {
+        height: 50px;
+        width: 200px;
+        margin: 10px;
+        border: none;
+        background-color: #440334;
+        color: white;
+        border-radius: 18px;
+   }
+
+   #area-tpainel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+   }
+
+   #tpainel {
+    
+    font-size: x-large;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    color: #440334;
+    margin: 20px;
+   }
+
+   #area-tpainel span{
+    font-family: 'Roboto', sans-serif;
+   }
+
+   

@@ -11,7 +11,7 @@ main {
 
 .area-login {
     width: 322px;
-    height: 560px;
+    height: 520px;
     background-color: #ffffff;
     margin-top: 50px;
     text-align: center;
@@ -73,6 +73,7 @@ main {
     color: #EC0868;
     font-size: x-large;
     margin-bottom: 10px;
+    margin-top: 20px;
   }
 
   #button-social {
@@ -107,4 +108,17 @@ main {
   #icon {
     margin-left: 80px;
     margin-right: 10px;
+  }
+
+  #txt-politica {
+    margin: 15px;
+
+  }
+
+  #politicaprivlink {
+    text-decoration: none;
+  }
+
+  p {
+    margin-top: 10px;
   }

@@ -37,52 +37,31 @@
 
     </header>
     
-    <main>
+    <main>  
 
-      <div id="body-carrossel">
-        <div class="carousel">  
-          
-          <div class="carousel-container" id="carousel">
-            <div class="carousel-slide" style="background-color: #ff5733;">
-                <img src="img/8.png" alt="">
-            </div>
-            <div class="carousel-slide" style="background-color: #33ff57;">
-              <img src="img/9.png" alt="">
-            </div>
-            <div class="carousel-slide" style="background-color: #5733ff;">
-              <img src="img/10.png" alt="">
-            </div>
-          </div>
-  
-          
-        </div>
+      <div id="area-tpainel">
+        <span>Olá <%= autenticado %>!</span><br>
+        <h1 id="tpainel">Painel Administrativo</h1>
       </div>
-      
-
+        
           <section id="artigos">
             <div id="barra"><hr></div>
 
-            <a href="/noticias"><div id="noticias">
+            <a href="/noticiasadm"><div id="noticias">
                 <img src="img/noticia.jpeg" alt="" id="img-noticias">
                 <h2>NOTÍCIAS</h2>
                 
             </div>
             </a>
 
-            <a href="/restaurantes"><div id="restaurantes">
+            <a href="/#"><div id="restaurantes">
                 <img src="img/restaurante.jpeg" alt="" id="img-noticias">
                 <h2>RESTAURANTES</h2>
                 
             </div>
             </a>
 
-            <a href="">
-              <div id="area-anuncio">
-                <h3>ANUNCIE AQUI!</h3>
-              </div>
-            </a>
-
-            <a href="/eventos"><div id="eventos">
+            <a href="/#"><div id="eventos">
                 <img src="img/eventos.jpeg" alt="" id="img-noticias">
                 <h2>EVENTOS</h2>
                 
@@ -97,18 +76,7 @@
             </a>-->
         
           </section>
-            <div id="comments">
-              <h2>Comentários</h2>
-              <ul id="comment-list">
-                  <!-- Os comentários serão exibidos aqui -->
-              </ul>
-              <form id="comment-form">
-                  <input type="text" id="name" placeholder="Seu nome" required>
-                  <textarea id="comment" placeholder="Seu comentário" required></textarea>
-                  <button type="submit" id="button-comment">Enviar</button>
-              </form>
-            </div>
-          </section>
+            
 
     </main>
     <footer>

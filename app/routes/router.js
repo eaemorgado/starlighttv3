@@ -28,6 +28,11 @@ const db = mysql.createConnection({
   var UsuarioDAL = require("../models/UsuarioDAL");
     var usuarioDAL = new UsuarioDAL(db);
 
+
+
+    var NoticiaDAL = require("../models/NoticiaDAL");
+    var noticiaDAL = new NoticiaDAL(db);
+
   const {validationResult } = require("express-validator");
 
 function myMiddleware(req, res, next) {
@@ -42,7 +47,7 @@ function myMiddleware(req, res, next) {
     res.redirect("/");
   });
   
-  router.get("/", verificarUsuAutenticado, function (req, res) {
+  router.get("/", verificarUsuAutenticado, async function (req, res) {
     req.session.autenticado.login = req.query.login;
     res.render("pages/home", req.session.autenticado);
   });
@@ -51,6 +56,16 @@ function myMiddleware(req, res, next) {
     req.session.autenticado.login = req.query.login;
     res.render("pages/home", req.session.autenticado);
   });
+
+  router.get("/usuario", verificarUsuAutenticado, function (req, res) {
+    if (req.session.autenticado.autenticado == null) {
+      res.render("pages/login")
+  } else {
+      res.render("pages/usuario",{autenticado: req.session.autenticado, retorno: null, erros: null})}
+  
+  });
+
+  
 
 router.get("/cadastro", function(req, res){
     res.render("pages/cadastro", {retorno: null, erros: null})}
@@ -72,8 +87,84 @@ router.get("/noticias-form", function(req, res){
     res.render("pages/noticias-form", {retorno: null, erros: null})}
 );
 
-router.get("/noticias", function(req, res){
-    res.render("pages/noticias", {retorno: null, erros: null})}
+router.get("/noticias", async function(req, res){
+  try {
+
+    let pagina = req.query.pagina == undefined ? 1 : req.query.pagina;
+      
+    inicio = parseInt(pagina - 1) * 5
+    results = await noticiaDAL.FindPage(inicio, 5);
+    totReg = await noticiaDAL.TotalReg();
+    console.log(results)
+
+    totPaginas = Math.ceil(totReg[0].total / 5);
+
+    var paginador = totReg[0].total <= 5 ? null : { "pagina_atual": pagina, "total_reg": totReg[0].total, "total_paginas": totPaginas }
+
+    console.log("auth --> ")
+    console.log(req.session.autenticado)
+    res.render("pages/noticias",{ noticias: results, paginador: paginador, autenticado:req.session.autenticado, login: req.res.autenticado} );
+  } catch (e) {
+    console.log(e); // console log the error so we can see it in the console
+    res.json({ erro: "Falha ao acessar dados" });
+  }    
+}
+);
+
+router.get("/paineladministrativo", verificarUsuAutorizado([2, 3], ("pages/restrito")), function (req, res){
+  req.session.autenticado.login = req.query.login;
+  res.render("pages/paineladministrativo", req.session.autenticado)
+}
+)
+
+
+
+router.get("/noticiasadm", verificarUsuAutorizado([2, 3], ("pages/restrito")), async function(req, res){
+  try {
+
+    let pagina = req.query.pagina == undefined ? 1 : req.query.pagina;
+      
+    inicio = parseInt(pagina - 1) * 10
+    results = await noticiaDAL.FindPage(inicio, 10);
+    totReg = await noticiaDAL.TotalReg();
+    console.log(results)
+
+    totPaginas = Math.ceil(totReg[0].total / 10);
+
+    var paginador = totReg[0].total <= 10 ? null : { "pagina_atual": pagina, "total_reg": totReg[0].total, "total_paginas": totPaginas }
+
+    console.log("auth --> ")
+    console.log(req.session.autenticado)
+    res.render("pages/noticiasadm",{ noticias: results, paginador: paginador, autenticado:req.session.autenticado, login: req.res.autenticado} );
+  } catch (e) {
+    console.log(e); // console log the error so we can see it in the console
+    res.json({ erro: "Falha ao acessar dados" });
+  }    
+}
+);
+
+router.get("/excluirnoticia/:id", function (req, res) {
+  var query = db.query(
+    "DELETE FROM noticia WHERE ?",
+    { id_noticia: req.params.id },
+    function (error, results, fields) {
+      if (error) throw error;
+    }
+  );  
+
+  res.redirect("/noticiasadm");
+});
+
+
+router.get("/formadd", verificarUsuAutorizado([2, 3], ("pages/login")), function (req, res){
+  req.session.autenticado.login = req.query.login;
+  res.render("pages/formadd", req.session.autenticado)
+}
+);
+
+
+router.get("/politicapriv", function(req, res){
+  res.render("pages/politicapriv", {retorno: null, erros: null})}
 );
 
 router.get("/restaurantes", function(req, res){
@@ -92,9 +183,7 @@ router.get("/comoajudar", function(req, res){
     res.render("pages/comoajudar", {retorno: null, erros: null})}
 );
 
-router.get("/formadd", function(req, res){
-    res.render("pages/formadd", {retorno: null, erros: null})}
-);
+
 
 
 router.get("/formenviado", function(req, res){
@@ -185,7 +274,7 @@ router.get("/excluir/:id", function (req, res) {
 // });
 
 
-router.post("/adicionar", function(req, res){
+router.post("/adicionar", verificarUsuAutorizado([2, 3], "pages/restrito"), function(req, res){
     const dadosNoticia = {
         titulo_noticia: req.body.titulo_noticia,
         descricao_noticia: req.body.descricao_noticia,
@@ -216,7 +305,7 @@ router.post("/adicionar", function(req, res){
       });
 
       setTimeout(function () {
-        res.render("pages/formenviado", { titulo_noticia: dadosNoticia.titulo_noticia });
+        res.render("pages/noticias", { titulo_noticia: dadosNoticia.titulo_noticia });
       }, 1000); 
 
       console.log(dadosNoticia);

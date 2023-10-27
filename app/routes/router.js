@@ -305,7 +305,7 @@ router.post("/adicionar", verificarUsuAutorizado([2, 3], "pages/restrito"), func
       });
 
       setTimeout(function () {
-        res.render("pages/noticias", { titulo_noticia: dadosNoticia.titulo_noticia });
+        res.redirect("/noticias");
       }, 1000); 
 
       console.log(dadosNoticia);

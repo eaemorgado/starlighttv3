@@ -231,4 +231,13 @@ header {
     font-family: 'Roboto', sans-serif;
    }
 
+
+   #escrita {
+    width: 275px;
+    height: 35px;
+    border-radius: 5px;
+    text-align: left;
+    border: 0px;
+    background-color: #EC0868;
+  }
    

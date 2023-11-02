@@ -13,11 +13,7 @@
 </head>
 <body>
 
-  <% if(autenticado){
-    if(login){%>
-   <h3>Login efetuado com sucesso, Olá <%= autenticado%></h3>
-   <% }
-} %>  
+  
     <header>
         <!--Area superior / espaço redes sociais e user-->
         <div id="superior">
@@ -40,17 +36,17 @@
     <main>
 
       <div id="body-carrossel">
-        <div class="carousel">  
+        <div class="carrousel">  
           
-          <div class="carousel-container" id="carousel">
-            <div class="carousel-slide" style="background-color: #ff5733;">
-                <img src="img/8.png" alt="">
+          <div class="carrousel-container" id="carrousel">
+            <div class="carrousel-slide" >
+                <img src="img/8.png" alt="1">
             </div>
-            <div class="carousel-slide" style="background-color: #33ff57;">
-              <img src="img/9.png" alt="">
+            <div class="carrousel-slide" >
+              <img src="img/9.png" alt="2">
             </div>
-            <div class="carousel-slide" style="background-color: #5733ff;">
-              <img src="img/10.png" alt="">
+            <div class="carrousel-slide" >
+              <img src="img/10.png" alt="3">
             </div>
           </div>
   
@@ -99,17 +95,53 @@
           </section>
             <div id="comments">
               <h2>Comentários</h2>
-              <ul id="comment-list">
-                  <!-- Os comentários serão exibidos aqui -->
-              </ul>
-              <form id="comment-form">
-                  <input type="text" id="name" placeholder="Seu nome" required>
-                  <textarea id="comment" placeholder="Seu comentário" required></textarea>
-                  <button type="submit" id="button-comment">Enviar</button>
+              <form action="/comentar" method="post" id="comment-form">
+                <input type="text" name="nome_comentario" id="name" value="<%= autenticado.autenticado%>" >
+                <textarea id="comment" name="comentario" placeholder="Seu comentário" autocomplete="off" required></textarea>
+                <button type="submit" id="button-comment">Enviar</button>
               </form>
+              <ul id="comment-list">
+                <% comentarios.forEach(function(comentario){ %>
+                  <div class="area-comentario">
+                    <h3><%=comentario.nome_comentario %> </h3>
+                    <p><%=comentario.comentario %></p>
+                  </div>
+                
+                <% }); %>
+
+                
+                  <!-- Os comentários serão exibidos aqui -->
+
+                  <% 
+                  if(paginador){ 
+                      %>
+              
+                      <div class="notificador">
+                          <ul>
+                              <%
+                      for(var i=1; i <= paginador.total_paginas; i++){ 
+                          if(paginador.pagina_atual==i){ 
+                              %>
+                              <li><a class="atual" href="?pagina=<%= i %>"> <%= i %> </a></li>
+                          <%
+                          } else {
+                          %>    
+                              <li><a href="?pagina=<%= i %>"> <%= i %> </a></li>
+                          <%
+                          }
+                      }
+                      %>
+                  </ul>
+              </div>
+              <%
+                  }
+                      %>
+              </ul>
+              
             </div>
           </section>
 
+         
     </main>
     <footer>
       <div id="footer-sociais">

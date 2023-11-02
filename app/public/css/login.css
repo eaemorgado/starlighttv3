@@ -5,22 +5,21 @@ main {
   padding-bottom: 30px;
 }
 
-
 .area-login {
-    width: 70%;
-    height: auto;
-    background-color: #ffffff;
-    margin: 0 auto;
-    margin-top: 30px;
-    text-align: center;
-    padding-top: 20px;
-    
-    margin-bottom: 20px;
-    border-radius: 10px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 900;
-    color: rgb(121, 121, 121);
-  }
+  width: 322px;
+  height: 520px;
+  background-color: #ffffff;
+  margin-top: 50px;
+  text-align: center;
+  padding-top: 20px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  color: rgb(121, 121, 121);
+  margin: 0 auto;
+
+}
   
   #escrita {
     width: 275px;
@@ -29,6 +28,7 @@ main {
     text-align: left;
     border: 0px;
     background-color: #EC0868;
+    color: #ffffff;
   }
   
   .nome {

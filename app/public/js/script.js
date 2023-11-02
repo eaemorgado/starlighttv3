@@ -1,27 +1,27 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const commentForm = document.getElementById('comment-form');
-    const commentList = document.getElementById('comment-list');
+// document.addEventListener('DOMContentLoaded', function() {
+//     const commentForm = document.getElementById('comment-form');
+//     const commentList = document.getElementById('comment-list');
 
-    commentForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        const nameInput = document.getElementById('name');
-        const commentInput = document.getElementById('comment');
+//     commentForm.addEventListener('submit', function(event) {
+//         event.preventDefault();
+//         const nameInput = document.getElementById('name');
+//         const commentInput = document.getElementById('comment');
 
-        const name = nameInput.value;
-        const comment = commentInput.value;
+//         const name = nameInput.value;
+//         const comment = commentInput.value;
 
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<strong>${name}:</strong> ${comment}`;
-        commentList.appendChild(listItem);
+//         const listItem = document.createElement('li');
+//         listItem.innerHTML = `<strong>${name}:</strong> ${comment}`;
+//         commentList.appendChild(listItem);
 
-        // Limpe os campos do formulário
-        nameInput.value = '';
-        commentInput.value = '';
-    });
-});
+//         // Limpe os campos do formulário
+//         nameInput.value = '';
+//         commentInput.value = '';
+//     });
+// });
 
-const carousel = document.getElementById("carousel");
-        const slides = document.querySelectorAll(".carousel-slide");
+const carousel = document.getElementById("carrousel");
+        const slides = document.querySelectorAll(".carrousel-slide");
 
         let currentIndex = 0;
 
@@ -42,3 +42,6 @@ const carousel = document.getElementById("carousel");
         window.addEventListener("resize", updateCarousel);
 
         updateCarousel(); // Atualiza o carrossel quando a página é carregada
+
+
+        

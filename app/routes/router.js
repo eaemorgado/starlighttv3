@@ -11,7 +11,7 @@ var salt = bcrypt.genSaltSync(10);
 const db = mysql.createConnection({
     host: "127.0.0.1",
     user: "root",
-    password: "",
+    password: "@ITB123456",
     database: "starlight",
     port: 3306
   });
@@ -33,6 +33,9 @@ const db = mysql.createConnection({
     var NoticiaDAL = require("../models/NoticiaDAL");
     var noticiaDAL = new NoticiaDAL(db);
 
+    var ComentarioDAL = require("../models/ComentarioDAL");
+    var comentarioDAL = new ComentarioDAL(db);
+
   const {validationResult } = require("express-validator");
 
 function myMiddleware(req, res, next) {
@@ -48,13 +51,53 @@ function myMiddleware(req, res, next) {
   });
   
   router.get("/", verificarUsuAutenticado, async function (req, res) {
-    req.session.autenticado.login = req.query.login;
-    res.render("pages/home", req.session.autenticado);
+    try {
+
+      let pagina = req.query.pagina == undefined ? 1 : req.query.pagina;
+        
+      inicio = parseInt(pagina - 1) * 5
+      results = await comentarioDAL.FindPage(inicio, 5);
+      totReg = await comentarioDAL.TotalReg();
+      console.log(results)
+  
+      totPaginas = Math.ceil(totReg[0].total / 5);
+  
+      var paginador = totReg[0].total <= 5 ? null : { "pagina_atual": pagina, "total_reg": totReg[0].total, "total_paginas": totPaginas }
+  
+      console.log("auth --> ")
+      console.log(req.session.autenticado)
+      res.render("pages/home",{ comentarios: results, paginador: paginador, autenticado:req.session.autenticado, login: req.res.autenticado} );
+      req.session.autenticado.login = req.query.login;
+    } catch (e) {
+      console.log(e); // console log the error so we can see it in the console
+      res.json({ erro: "Falha ao acessar dados" });
+    }    
+    
   });
 
-  router.get("/home", verificarUsuAutenticado, function (req, res) {
-    req.session.autenticado.login = req.query.login;
-    res.render("pages/home", req.session.autenticado);
+  router.get("/home", verificarUsuAutenticado, async function (req, res) {
+    try {
+
+      let pagina = req.query.pagina == undefined ? 1 : req.query.pagina;
+        
+      inicio = parseInt(pagina - 1) * 5
+      results = await comentarioDAL.FindPage(inicio, 5);
+      totReg = await comentarioDAL.TotalReg();
+      console.log(results)
+  
+      totPaginas = Math.ceil(totReg[0].total / 5);
+  
+      var paginador = totReg[0].total <= 5 ? null : { "pagina_atual": pagina, "total_reg": totReg[0].total, "total_paginas": totPaginas }
+  
+      console.log("auth --> ")
+      console.log(req.session.autenticado)
+      res.render("pages/home",{ comentarios: results, paginador: paginador, autenticado:req.session.autenticado, login: req.res.autenticado} );
+      req.session.autenticado.login = req.query.login;
+    } catch (e) {
+      console.log(e); // console log the error so we can see it in the console
+      res.json({ erro: "Falha ao acessar dados" });
+    }    
+    
   });
 
   router.get("/usuario", verificarUsuAutenticado, function (req, res) {
@@ -156,7 +199,7 @@ router.get("/excluirnoticia/:id", function (req, res) {
 });
 
 
-router.get("/formadd", verificarUsuAutorizado([2, 3], ("pages/login")), function (req, res){
+router.get("/formadd", verificarUsuAutorizado([2, 3], ("pages/restrito")), function (req, res){
   req.session.autenticado.login = req.query.login;
   res.render("pages/formadd", req.session.autenticado)
 }
@@ -272,6 +315,46 @@ router.get("/excluir/:id", function (req, res) {
 //         res.send("Houve um erro: " + erro)
 //     })
 // });
+
+router.post("/comentar", async function(req, res){
+  if (req.session.autenticado.autenticado == null) {
+    res.render("pages/login")
+} else {
+  const dadosComentario = {
+    nome_comentario: req.body.nome_comentario,
+    comentario: req.body.comentario
+  }
+
+  const {nome_comentario, comentario} = req.body;
+
+  if (!nome_comentario || !comentario) {
+    return res.send('Por favor, preencha todos os campos.');
+  }
+
+  const id_comentario = uuid.v4();
+
+  const query = 'INSERT INTO comentarios (id_comentario, nome_comentario, comentario) VALUES (?, ?, ?)';
+  const values = [id_comentario, dadosComentario.nome_comentario, dadosComentario.comentario];
+
+  db.query(query, values, (err, result) => {
+    if (err) {
+      console.error('Erro ao inserir dados no banco de dados:', err);
+    } else {
+      console.log('Dados inseridos com sucesso!');
+    }
+  });
+
+  setTimeout(function () {
+    res.redirect("/")
+  }, 1000); 
+
+  console.log(dadosComentario);    
+}
+
+  
+
+
+})
 
 
 router.post("/adicionar", verificarUsuAutorizado([2, 3], "pages/restrito"), function(req, res){

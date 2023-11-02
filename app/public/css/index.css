@@ -1,4 +1,8 @@
 
+html {
+    scroll-behavior: smooth;
+}
+
 @media (min-width: 320px) and (max-width: 480px){ 
     
     /* area de comentarios */
@@ -27,6 +31,7 @@
     height: 30px;
     width: 250px;
     margin-top: 20px;
+    padding-left: 5px;
 
     }
 
@@ -47,7 +52,29 @@
     border: none;
     height: 30px;
     width: 250px;
-    margin-bottom: 40p;
+    margin-bottom: 40px;
+    }
+
+    .area-comentario {
+        background-color: #ec7d10;
+        color: #ececec;
+        padding: 20px;
+    border: none;
+    height: auto;
+    width: 250px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    }
+
+    .area-comentario h3{
+        margin-bottom: 10px;
+    }
+
+    .area-comentario p{
+        font-weight: 300;
     }
 
     /* configurações dos artigos*/
@@ -76,6 +103,7 @@
         padding: 10px;
         text-align: center;
         font-weight: 1000;
+        border-radius: 20px;
     }
 
     #noticias:hover {
@@ -93,6 +121,7 @@
         padding: 10px;
         text-align: center;
         font-weight: 1000;
+        border-radius: 20px;
     }
 
     #restaurantes:hover {
@@ -110,6 +139,7 @@
         padding: 10px;
         text-align: center;
         font-weight: 1000;
+        border-radius: 20px;
     }
 
     #eventos:hover {
@@ -119,6 +149,7 @@
 
     #img-noticias {
         height: 65px;
+        border-radius: 10px;
     
     }
 
@@ -182,6 +213,28 @@
     margin-bottom: 40p;
     }
 
+    .area-comentario {
+        background-color: #ec7d10;
+        color: #ececec;
+        padding: 20px;
+    border: none;
+    height: auto;
+    width: 250px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    }
+
+    .area-comentario h3{
+        margin-bottom: 10px;
+    }
+
+    .area-comentario p{
+        font-weight: 300;
+    }
+
     /* configurações dos artigos*/
 
     #area-anuncio {
@@ -208,6 +261,7 @@
         padding: 10px;
         text-align: center;
         font-weight: 1000;
+        border-radius: 20px;
     }
 
     #noticias:hover {
@@ -225,6 +279,7 @@
         padding: 10px;
         text-align: center;
         font-weight: 1000;
+        border-radius: 20px;
     }
 
     #restaurantes:hover {
@@ -242,6 +297,7 @@
         padding: 10px;
         text-align: center;
         font-weight: 1000;
+        border-radius: 20px;
     }
 
     #eventos:hover {
@@ -251,6 +307,7 @@
 
     #img-noticias {
         height: 100px;
+        border-radius: 10px;
     
     }
 
@@ -315,6 +372,28 @@
     margin-bottom: 40p;
     }
 
+    .area-comentario {
+        background-color: #ec7d10;
+        color: #ececec;
+        padding: 20px;
+    border: none;
+    height: auto;
+    width: 250px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    }
+
+    .area-comentario h3{
+        margin-bottom: 10px;
+    }
+
+    .area-comentario p{
+        font-weight: 300;
+    }
+
     /* configurações dos artigos*/
 
     #area-anuncio {
@@ -341,6 +420,7 @@
         padding: 10px;
         text-align: center;
         font-weight: 1000;
+        border-radius: 20px;
     }
 
     #noticias:hover {
@@ -358,6 +438,7 @@
         padding: 10px;
         text-align: center;
         font-weight: 1000;
+        border-radius: 20px;
     }
 
     #restaurantes:hover {
@@ -375,6 +456,7 @@
         padding: 10px;
         text-align: center;
         font-weight: 1000;
+        border-radius: 20px;
     }
 
     #eventos:hover {
@@ -385,6 +467,7 @@
 
     #img-noticias {
         height: 100px;
+        border-radius: 10px;
     
     }
 
@@ -449,14 +532,18 @@ body main section hr {
 
 /*configurações do carrossel estatico*/
 
-.carousel-container {
+.carrousel-container {
     display: flex;
-    overflow: hidden;
     max-width: 100%;
 }
 
-.carousel-slide {
+.carrousel-slide {
     min-width: 100%;
     transition: transform 1s ease-in-out;
+
+}
+
+.carrousel-slide img   {
+    width: 100%;
 }
   

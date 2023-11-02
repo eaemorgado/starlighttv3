@@ -8,7 +8,7 @@
     <title>Home - Starlight</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/sobre.css">
+    <link rel="stylesheet" href="css/addnoticia.css">
     
     
 </head>
@@ -33,19 +33,19 @@
     
     <main>
         <h2 id="tpainel">Adicionar Notícia</h2>
-        <form action="/adicionar" method="post">
-            <label for="tnoticia" id="escrita">Titulo da Notícia</label> <br>
-            <input type="text" name="titulo_noticia" id="escrita"> <br>
-            <label for="nassunto">Noticia</label> <br>
-            <input type="text" name="descricao_noticia" id="escrita"> <br>
-            <label for="data">Data da Noticia</label> <br>
-            <input type="date" name="data_noticia" id="data"> <br>
+        <form action="/adicionar" method="post" id="form-add-noticia">
+            <label for="tnoticia" id="txt-noticia">Titulo da Notícia</label> <br>
+            <input type="text" name="titulo_noticia" id="escrita-noticia"> <br>
+            <label for="nassunto" id="txt-noticia">Noticia</label> <br>
+            <input type="text" name="descricao_noticia" id="escrita-noticia2"> <br>
+            <label for="data" id="txt-noticia">Data da Noticia</label> <br>
+            <input type="date" name="data_noticia" class="#date-input" id="data" value="MyDate"> <br>
             <select name="situacao_noticia" id="situacao">
                 <option value="1">Publico</option>
                 <option value="2">Privado</option>
             </select>
 
-            <input type="submit" value="Adicionar">
+            <input type="submit" value="Adicionar" id="button-comment">
         </form>
         
     </main>
@@ -66,6 +66,8 @@
       
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+
+    </script>
 </body>
 </html>

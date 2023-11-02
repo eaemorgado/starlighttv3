@@ -84,3 +84,10 @@ transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
     color: #ffff;
 }
 
+.add-cart::after {
+    transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    background-color: #EC0868;
+    color: #ffff;
+}
+
+

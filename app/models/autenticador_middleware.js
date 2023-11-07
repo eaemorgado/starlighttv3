@@ -32,8 +32,12 @@ function gravarUsuAutenticado(usuarioDAL, bcrypt) {
                     var autenticado = {
                         autenticado: results[0].nome,
                         id: results[0].id,
+                        nome: results[0].nome,
+                        usuario: results[0].usuario,
+                        email: results[0].email,
                         tipo: results[0].id_tipo_usuario,
-                        img_perfil_pasta:"../public/img/profile-user.png"
+                        img_perfil_pasta:"img/profile-user.png"
+
                     };
                 }
             } else {

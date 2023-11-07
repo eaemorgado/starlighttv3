@@ -8,7 +8,7 @@
     <title>Home - Starlight</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/sobre.css">
+    <link rel="stylesheet" href="css/usuario.css">
     
     
 </head>
@@ -33,6 +33,29 @@
     
     <main id="area-painel">
 
+        <section>
+            <div id="dados_user">
+                <div id="dado_user">
+                    <span id="titulo_user">Nome</span>
+                    <span><%= autenticado.autenticado %></span>
+                </div>
+                <div id="dado_user">
+                    <span id="titulo_user">Usuario</span>
+                    <span><%= autenticado.usuario %></span>
+                </div>
+                <div id="dado_user">
+                    <span id="titulo_user">Email</span>
+                    <span><%= autenticado.email %></span>
+                </div>
+                
+                
+            </div>
+            <div id="img_user">
+                <img src="<%= autenticado.img_perfil_pasta %>" alt="">
+                <button>Editar</button>
+            </div>
+        </section>
+
         
         <a href="/paineladministrativo" >
             <button id="button-painel">
@@ -42,11 +65,11 @@
         
         
 
-        <a href="#">
+        <!-- <a href="#">
             <button id="button-painel">
                 <p>Dados</p>
             </button>
-        </a>
+        </a> -->
 
         <a href="#">
             <button id="button-painel">

@@ -1,0 +1,36 @@
+#area-painel section {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+#dados_user, #img_user {
+    margin: 20px;
+    padding: 10px;
+}
+
+#dado_user {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#dado_user span {
+    margin-top: 5px;
+    font-size: large;
+    font-weight: 700;
+}
+
+#titulo_user {
+    color: #EC0868;
+}
+
+#img_user button {
+    border: none;
+    border-radius: 10px;
+    color: #ffff;
+    background-color: #EC0868;
+    height: 35px;
+    width: 80px;
+}

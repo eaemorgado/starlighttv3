@@ -6,6 +6,22 @@ const uuid = require('uuid');
 var bcrypt = require("bcryptjs");
 var salt = bcrypt.genSaltSync(10);
 
+const multer = require('multer');
+const path = require('path');
+// ****************** Versão com armazenamento em diretório
+// Definindo o diretório de armazenamento das imagens
+var storagePasta = multer.diskStorage({
+  destination: (req, file, callBack) => {
+    callBack(null, './app/public/img/noticias/') // diretório de destino  
+  },
+  filename: (req, file, callBack) => {
+    callBack(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    //renomeando o arquivo para evitar duplicidade de nomes
+  }
+})
+
+var upload = multer({ storage: storagePasta });
+
 
 
 const db = mysql.createConnection({
@@ -357,12 +373,15 @@ router.post("/comentar", async function(req, res){
 })
 
 
-router.post("/adicionar", verificarUsuAutorizado([2, 3], "pages/restrito"), function(req, res){
+router.post("/adicionar", verificarUsuAutorizado([2, 3], "pages/restrito"), 
+    upload.single('img_noticia'),
+    async function(req, res){
     const dadosNoticia = {
         titulo_noticia: req.body.titulo_noticia,
         descricao_noticia: req.body.descricao_noticia,
         data_noticia: req.body.data_noticia,
-        situacao_noticia: req.body.situacao_noticia
+        situacao_noticia: req.body.situacao_noticia,
+        img_noticia: req.body.img_noticia
     }
 
     const {titulo_noticia, descricao_noticia} = req.body;
@@ -371,13 +390,21 @@ router.post("/adicionar", verificarUsuAutorizado([2, 3], "pages/restrito"), func
     if (!titulo_noticia || !descricao_noticia) {
         return res.send('Por favor, preencha todos os campos.');
       }
+
+      if (!req.file) {
+        console.log("Falha no carregamento");
+      } else {
+        caminhoArquivo = "img/noticias/" + req.file.filename;
+        dadosNoticia.img_noticia = caminhoArquivo
+        console.log(req.file)
+      }
     
 
       const id_noticia = uuid.v4();
 
 
-      const query = 'INSERT INTO noticia (id_noticia, titulo_noticia, descricao_noticia, data_noticia, situacao_noticia) VALUES (?, ?, ?, ?, ?)';
-      const values = [id_noticia, dadosNoticia.titulo_noticia, dadosNoticia.descricao_noticia, dadosNoticia.data_noticia, dadosNoticia.situacao_noticia];
+      const query = 'INSERT INTO noticia (id_noticia, titulo_noticia, descricao_noticia, data_noticia, situacao_noticia, img_noticia) VALUES (?, ?, ?, ?, ?, ?)';
+      const values = [id_noticia, dadosNoticia.titulo_noticia, dadosNoticia.descricao_noticia, dadosNoticia.data_noticia, dadosNoticia.situacao_noticia, dadosNoticia.img_noticia];
 
       db.query(query, values, (err, result) => {
         if (err) {

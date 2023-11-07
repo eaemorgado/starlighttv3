@@ -19,7 +19,7 @@
           <a href="https://www.instagram.com/starlight_lgbt/" target="_blank"><img src="img/instagram.png" alt="instagram" id="iconh"></a>
           <a href="https://www.twitter.com/starlight_lgbt/" target="_blank"><img src="img/twitter.png" alt="twitter" id="iconh"></a>
           <a href="https://www.pinterest.com/starlightsitelgbt/" target="_blank"><img src="img/pinterest.png" alt="pinterest" id="iconh"></a>
-          <a href="/login"><img src="img/user.png" alt="user-icon" id="iconu"></a>
+          <a href="/usuario"><img src="img/user.png" alt="user-icon" id="iconu"></a>
         </div>
         <a href="/home"><img src="img/logo.png" alt="logo" id="logo"></a>
 
@@ -33,7 +33,8 @@
     
     <main>
         <h2 id="tpainel">Adicionar Notícia</h2>
-        <form action="/adicionar" method="post" id="form-add-noticia">
+        <form action="/adicionar" method="post" id="form-add-noticia" enctype="multipart/form-data">
+          <input type="file" name="img_noticia" id="">
             <label for="tnoticia" id="txt-noticia">Titulo da Notícia</label> <br>
             <input type="text" name="titulo_noticia" id="escrita-noticia"> <br>
             <label for="nassunto" id="txt-noticia">Noticia</label> <br>

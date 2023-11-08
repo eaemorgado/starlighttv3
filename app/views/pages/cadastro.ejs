@@ -78,7 +78,8 @@
                 <h1 id="txt-login">Cadastro</h1>
 
                 <div class="nome">
-                    <input type="text" name="nome" class="<%= avisoErro.nome %>" id="escrita" value="Nome" autocomplete="off" onfocus="this.value='';">
+                    <h3 id="txt-email">Nome</h3>
+                    <input type="text" name="nome" class="<%= avisoErro.nome %>" id="escrita"  autocomplete="off">
                     <label for="nome"></label>
                 </div>
                 <span>
@@ -86,7 +87,8 @@
                 </span>
 
                 <div class="numero">
-                    <input type="text" name="usuario" class="<%= avisoErro.nome %>" id="escrita" value="Usuario" autocomplete="off" onfocus="this.value='';">
+                    <h3 id="txt-email">Usuario</h3>
+                    <input type="text" name="usuario" class="<%= avisoErro.nome %>" id="escrita" autocomplete="off">
                     <label for="usuario"></label>
                 </div>
                 <span>
@@ -95,20 +97,22 @@
 
 
                 <div class="email">
-                    <input type="text" name="email" class="<%= avisoErro.email %>"  id="escrita" value="E-mail" autocomplete="off" onfocus="this.value='';">
+                    <h3 id="txt-email">E-mail</h3>
+                    <input type="text" name="email" class="<%= avisoErro.email %>"  id="escrita"  autocomplete="off" >
                     <label for="E-mail"></label>
                 </div>
-                <!-- <span>
+                 <span>
                     <%= msgErro.email %>
-                </span> -->
+                </span> 
 
                 <div class="senha">
-                    <input type="password" name="senha" class="<%= avisoErro.senha %>"  id="escrita" value="Senha" autocomplete="off" onfocus="this.value='';">
+                    <h3 id="txt-email">Senha</h3>
+                    <input type="password" name="senha" class="<%= avisoErro.senha %>"  id="escrita"  autocomplete="off">
                     <label for="Senha"></label>
                 </div>
-                <!-- <span>
+                <span>
                     <%= msgErro.senha %>
-                </span> -->
+                </span>
 
                 
                 <a href="/politicapriv" id="politicaprivlink"><p id="txt-politica"> Ao se cadastrar você concorda com os termos de Politica e Privacidade!

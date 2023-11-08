@@ -27,7 +27,7 @@ var upload = multer({ storage: storagePasta });
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "",
+  password: "@ITB123456",
   database: "starlight",
   port: 3306  
   });
@@ -423,46 +423,6 @@ router.post("/adicionar", verificarUsuAutorizado([2, 3], "pages/restrito"),
   
 })
 
-// router.post("/cadastrar", 
-//     body("email")
-//     .isEmail({min:5, max:50})
-//     .withMessage("O email deve ser válido"),
-//     body("senha")
-//     .isStrongPassword()
-//     .withMessage("A senha deve ser válida"),
-
-//     async function(req, res){
-    
-//     const dadosForm = {
-//         nome: req.body.nome,
-//         usuario: req.body.usuario,
-//         email: req.body.email,
-//         senha: bcrypt.hashSync(req.body.senha, salt)
-//     }
-//     if (!dadosForm.email || !dadosForm.senha) {
-//         return res.status(400).send('Por favor, preencha todos os campos.');
-//     }
-//     const id = uuid.v4();
-
-//     const query = 'INSERT INTO usuarios (id, nome, usuario, email, senha) VALUES (?, ?, ?, ?, ?)';
-//     const values = [id, dadosForm.nome, dadosForm.usuario, dadosForm.email, dadosForm.senha];
-
-//     db.query(query, values, (err, result) => {
-//         if (err) {
-//           console.error('Erro ao inserir dados no banco de dados:', err);
-//         } else {
-//           console.log('Dados inseridos com sucesso!');
-//         }
-//       });
-
-      
-
-//       setTimeout(function () {
-//         res.render("pages/formenviado", { email: dadosForm.email });
-//       }, 1000); 
-
-//       console.log(dadosForm)    
-// })
 
 router.post("/cadastrar",
   body("nome")
@@ -504,31 +464,6 @@ router.post("/cadastrar",
   });
 
 
-
-// router.post(
-//     "/login",
-//     body("email")
-//       .isLength({ min: 4, max: 45 })
-//       .withMessage("O nome de usuário/e-mail deve ter de 8 a 45 caracteres"),
-//     body("senha")
-//       .isStrongPassword()
-//       .withMessage("A senha deve ter no mínimo 8 caracteres (mínimo 1 letra maiúscula, 1 caractere especial e 1 número)"),
-  
-//     gravarUsuAutenticado(usuarioDAL, bcrypt),
-    
-//     function (req, res) {
-//       const erros = validationResult(req);
-//       if (!erros.isEmpty()) {
-        
-//         return res.render("pages/login", { listaErros: erros, dadosNotificacao: null, autenticado: null })
-//       }
-//       if (req.session.autenticado != null) {
-//         //mudar para página de perfil quando existir
-//         res.redirect("/?login=logado");
-//       } else {
-//         res.render("pages/login", { listaErros: erros, autenticado: req.session.autenticado, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "E-mail e/ou senha inválidos!", tipo: "error" } })
-//       }
-// });
 
 router.post(
   "/login",

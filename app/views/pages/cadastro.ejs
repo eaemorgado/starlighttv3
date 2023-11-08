@@ -8,9 +8,58 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/cadastro.css">
+    <script src="js/notify.js"></script>
+    <!-- CSS -->
+    <!-- https://github.com/simple-notify/simple-notify -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.css" />
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/simple-notify@0.5.5/dist/simple-notify.min.js"></script>
+
     
 </head>
 <body>
+    <% 
+    let msgErro = {"nome":"", "email":"",senha:""};
+    let avisoErro = {"nome":"", "email":"",senha:""};
+    if(listaErros){
+        listaErros.errors.forEach(function(itemErro){
+            if(itemErro.path == "nome"){
+                avisoErro.nome = "erro";
+                msgErro.nome += " "+itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo nome<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+            if(itemErro.path == "senha"){
+                avisoErro.senha = "erro";
+                msgErro.senha = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo senha<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%                
+            }
+            if(itemErro.path == "email"){
+                avisoErro.email = "erro";
+                msgErro.email = itemErro.msg;
+                %>
+                <script>
+                    notify("Erro no preenchimento","Verifique o campo e-mail<br><%= itemErro.msg%>", "error", "center")                        
+                </script>
+                <%
+            }
+        })
+    }
+    if (dadosNotificacao) { %>
+        <script>
+                notify("<%= dadosNotificacao.titulo%>","<%= dadosNotificacao.mensagem%>", "<%= dadosNotificacao.tipo%>", "center")
+                if("<%= dadosNotificacao.tipo %>" == "success"){
+                    setTimeout(function(){window.location="/"}, 3000)
+                }                        
+        </script>
+    <% } %>
     <header>
         <!--Area superior / espaço redes sociais e user-->
         <div id="superior">
@@ -29,44 +78,39 @@
                 <h1 id="txt-login">Cadastro</h1>
 
                 <div class="nome">
-                    <input type="text" name="nome" id="escrita" value="Nome" autocomplete="off" onfocus="this.value='';">
+                    <input type="text" name="nome" class="<%= avisoErro.nome %>" id="escrita" value="Nome" autocomplete="off" onfocus="this.value='';">
                     <label for="nome"></label>
                 </div>
+                <span>
+                    <%= msgErro.nome %>
+                </span>
 
                 <div class="numero">
-                    <input type="text" name="usuario" id="escrita" value="Usuario" autocomplete="off" onfocus="this.value='';">
+                    <input type="text" name="usuario" class="<%= avisoErro.nome %>" id="escrita" value="Usuario" autocomplete="off" onfocus="this.value='';">
                     <label for="usuario"></label>
                 </div>
+                <span>
+                    <%= msgErro.nome %>
+                </span>
 
 
                 <div class="email">
-                    <input type="text" name="email" id="escrita" value="E-mail" autocomplete="off" onfocus="this.value='';">
+                    <input type="text" name="email" class="<%= avisoErro.email %>"  id="escrita" value="E-mail" autocomplete="off" onfocus="this.value='';">
                     <label for="E-mail"></label>
                 </div>
+                <!-- <span>
+                    <%= msgErro.email %>
+                </span> -->
 
                 <div class="senha">
-                    <input type="password" name="senha" id="escrita" value="Senha" autocomplete="off" onfocus="this.value='';">
+                    <input type="password" name="senha" class="<%= avisoErro.senha %>"  id="escrita" value="Senha" autocomplete="off" onfocus="this.value='';">
                     <label for="Senha"></label>
                 </div>
+                <!-- <span>
+                    <%= msgErro.senha %>
+                </span> -->
 
-                <!-- <div class="termos">
-                    <input type="checkbox" id="box">
-                    <h2 id="senha-termos"> Concordo com os <a href="">termos de serviço</a>. </h2>
-                </div> -->
-            
                 
-
-                <!-- <input type="submit" value="Cadastrar" id="entrar"> -->
-
-                <!-- <button id="button-social">
-                    <img src="img/google.png" alt="" id="icon">
-                    <h3>Google</h3>
-                </button>
-
-                <button id="button-social-facebook">
-                    <img src="img/facebook.png" alt="" id="icon">
-                    <h3>Facebook</h3>
-                </button> -->
                 <a href="/politicapriv" id="politicaprivlink"><p id="txt-politica"> Ao se cadastrar você concorda com os termos de Politica e Privacidade!
                 </p></a>
 

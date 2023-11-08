@@ -15,6 +15,28 @@ module.exports = class ProdutosDAL {
         });
     };
 
+    findID(id) {
+        return new Promise((resolve, reject) => {
+            this.starlight.query("SELECT * FROM comentarios WHERE id_comentario = ?", [id], function(error, elements){
+                if (error) {
+                    return reject(error);
+                }
+                return resolve(elements);
+            });
+        });
+    };
+
+    ALIKE(id, camposJson){
+        return new promise(function(resolve, reject){
+            this.starlight.query('UPDATE comentarios SET ? WHERE id_comentario = ?', [camposJson,id], function(error, elements){
+                if(error){
+                    return reject(error)
+                }
+                return resolve(elements)
+            }
+         )})
+    };
+
     // findUserEmail(camposForm) {
     //     return new Promise((resolve, reject) => {
     //         this.athenashop.query("SELECT * FROM produtos WHERE email = ?",

@@ -106,9 +106,15 @@
                   <div class="area-comentario">
                     <h3><%=comentario.nome_comentario %> </h3>
                     <p><%=comentario.comentario %></p>
-                    <form action="/link">
+                    <button onclick="<%=" window.location='/Alike/"+ comentario.id_comentario %>'">
+                      <img src="imagens/like" alt="like">
                       
-                    </form>
+                  </button>
+                  <p> <%= comentario.like_ %> </p>
+                  <button onclick="<%=" window.location='/Adlike/"+ comentario.id_comentario %>'">
+                    <img src="imagens/dlike" alt="deslike">
+                </button>
+                <p> <%= comentario.deslike %></p>
                     
                   </div>
                 

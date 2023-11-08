@@ -595,6 +595,23 @@ router.post(
 //            }, 1000); 
 //     });
 
+router.get("/Alike/:id", async function (req, res) {
+  try{
+    let result = await comentarioDAL.findID(req.params.id)
+    var dadosForm = {
+      like_: results[0].like_ + 1
+    }
+
+    let resultsUpdate = await comentarioDAL.ALIKE(req.params.id, dadosForm)
+    console.log(resultsUpdate)
+
+    res.redirect("/")
+  }catch(e){
+
+  }
+})
+
+
 
 
 module.exports = router;

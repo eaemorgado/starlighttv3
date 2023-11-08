@@ -6,12 +6,13 @@ USE `starlight`;
 DROP TABLE IF EXISTS `usuarios`;
 use `starlight`;
 CREATE TABLE usuarios (
-  id varchar(200) primary key,
+  id int not null auto_increment,
   nome varchar(255) NOT NULL,
   usuario varchar(50) NOT NULL,
   email varchar(60) NOT NULL,
   senha varchar(200) NOT NULL,
-  id_tipo_usuario int not null default '1'
+  id_tipo_usuario int not null default '1',
+  primary key (`id`)
 );
 
   DROP TABLE IF EXISTS `noticia`;
@@ -21,7 +22,8 @@ CREATE TABLE usuarios (
   titulo_noticia varchar(255),
   descricao_noticia varchar(255),
   data_noticia varchar (60),
-  situacao_noticia varchar (60)
+  situacao_noticia varchar (60),
+  img_noticia varchar(100)
 );
 
 create table `tipo_usuario` (
@@ -32,6 +34,14 @@ create table `tipo_usuario` (
     primary key (`id_tipo_usuario`)
     
 );	
+
+
+
+create table comentarios (
+	id_comentario varchar (255),
+    nome_comentario varchar (255),
+    comentario varchar (255)
+);
 
 
 

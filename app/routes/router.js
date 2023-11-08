@@ -25,11 +25,11 @@ var upload = multer({ storage: storagePasta });
 
 
 const db = mysql.createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: "@ITB123456",
-    database: "starlight",
-    port: 3306
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "starlight",
+  port: 3306  
   });
 
   db.connect((err) => {
@@ -107,7 +107,9 @@ function myMiddleware(req, res, next) {
   
       console.log("auth --> ")
       console.log(req.session.autenticado)
-      res.render("pages/home",{ comentarios: results, paginador: paginador, autenticado:req.session.autenticado, login: req.res.autenticado} );
+      res.render("pages/home",{ comentarios: results, paginador: paginador, autenticado:req.session.autenticado, login: req.res.autenticado, dadosNotificacao: {
+        titulo: "login realizado!", mensagem: "Usuário logado com sucesso!", tipo: "success"
+      } } );
       req.session.autenticado.login = req.query.login;
     } catch (e) {
       console.log(e); // console log the error so we can see it in the console
@@ -479,6 +481,7 @@ router.post("/cadastrar",
       email: req.body.email,
       senha: bcrypt.hashSync(req.body.senha, salt),
     };
+    
     const erros = validationResult(req);
     if (!erros.isEmpty()) {
       return res.render("pages/cadastro", { listaErros: erros, dadosNotificacao: null, valores: req.body })
@@ -544,7 +547,11 @@ router.post(
     }
     if (req.session.autenticado != null) {
       //mudar para página de perfil quando existir
-      res.redirect("/");
+      res.render("pages/login", {
+        listaErros: null, dadosNotificacao: {
+          titulo: "Login realizado!", mensagem: "Usuário logado com sucesso", tipo: "success"
+        }, valores: req.body
+      })
     } else {
       res.render("pages/login", { listaErros: erros, dadosNotificacao: { titulo: "Erro ao logar!", mensagem: "Usuário e/ou senha inválidos!", tipo: "error" } })
     }

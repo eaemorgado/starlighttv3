@@ -8,7 +8,7 @@
     <title>Home - Starlight</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/usuario.css">
+    <link rel="stylesheet" href="css/addnoticia.css">
     
     
 </head>
@@ -31,64 +31,20 @@
 
     </header>
     
-    <main id="area-painel">
-
-        <section>
-            <div id="dados_user">
-                <div class="img-up" id="all-in">
-                    <label for="">Foto de perfil</label>
-                    <input type="file" name="img_usuario" id="img_usuario" onchange="loadImg()">
-                    <img class="img-perfil" id="img-preview" src="<%= autenticado.img_usuario %>">
-                </div>
-                <div id="dado_user">
-                    <span id="titulo_user">Nome</span>
-                    <span><%= autenticado.autenticado %></span>
-                </div>
-                <div id="dado_user">
-                    <span id="titulo_user">Usuario</span>
-                    <span><%= autenticado.usuario %></span>
-                </div>
-                <div id="dado_user">
-                    <span id="titulo_user">Email</span>
-                    <span><%= autenticado.email %></span>
-                </div>
-                
-                
-            </div>
-            <div id="img_user">
-                <img src="<%= autenticado.img_perfil_pasta %>" alt="">
-                <button>Editar</button>
-            </div>
-        </section>
-
-        
-        <a href="/paineladministrativo" >
-            <button id="button-painel">
-                <p>Painel Adminisrativo</p>
-            </button>
-        </a>
-        
-        
-
-        <!-- <a href="#">
-            <button id="button-painel">
-                <p>Dados</p>
-            </button>
-        </a> -->
+    <main>
+        <h2 id="tpainel">Adicionar Produto</h2>
+        <form action="/publicarproduto" method="post" id="form-add-noticia" enctype="multipart/form-data">
+          <input type="file" name="img_produto" id="">
+            <label for="tnoticia" id="txt-noticia">Nome do Produto</label> <br>
+            <input type="text" name="nome_produto" id="escrita-noticia"> <br>
+            <label for="nassunto" id="txt-noticia">Valor</label> <br>
+            <input type="text" name="valor_produto" id="escrita-noticia2"> <br>
+            <label for="data" id="txt-noticia">link do Produto</label> <br>
+            <input type="text" name="link_produto" id="escrita-noticia2"> <br>
 
 
-
-        <a href="#">
-            <button id="button-painel">
-                <p>Politica de Privacidade</p>
-            </button>
-        </a>
-
-        <a href="/sair">
-            <button id="button-painel">
-                <p>Sair da Conta</p>
-            </button>
-        </a>
+            <input type="submit" value="Adicionar" id="button-comment">
+        </form>
         
     </main>
     <footer>
@@ -108,6 +64,8 @@
       
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+
+    </script>
 </body>
 </html>

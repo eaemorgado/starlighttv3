@@ -25,11 +25,11 @@ var upload = multer({ storage: storagePasta });
 
 
 const db = mysql.createConnection({
-  host: "localhost",
+  host: "monorail.proxy.rlwy.net",
   user: "root",
-  password: "@ITB123456",
-  database: "starlight",
-  port: 3306  
+  password: "DGaAhcG3FfG5-Gd5dcehgCB14heA3eE5",
+  database: "railway",
+  port: 54209  
   });
 
   db.connect((err) => {
@@ -51,6 +51,10 @@ const db = mysql.createConnection({
 
     var ComentarioDAL = require("../models/ComentarioDAL");
     var comentarioDAL = new ComentarioDAL(db);
+
+    var ProdutosDAL = require("../models/ProdutosDAL");
+    var produtosDAL = new ProdutosDAL(db);
+
 
   const {validationResult } = require("express-validator");
 
@@ -171,6 +175,76 @@ router.get("/noticias", async function(req, res){
 }
 );
 
+// router.get("/addproduto", verificarUsuAutenticado, function (req, res) {
+//   if (req.session.autenticado.autenticado == null) {
+//     res.render("pages/login", { listaErros: null, dadosNotificacao: null})
+// } else {
+//     res.render("pages/addproduto",{autenticado: req.session.autenticado, retorno: null, erros: null})}
+
+// });
+
+// router.post("/publicarproduto",
+//   upload.single('img_produto'),
+//   async function(req, res){
+//     const formProduto = {
+//         nome_produto: req.body.nome_produto,
+//         valor_produto: req.body.valor_produto,
+//         link_produto: req.body.link_produto,
+//         img_produto: req.body.img_produto
+//     }
+//     if (!req.file) {
+//       console.log("Falha no carregamento");
+//     } else {
+//       caminhoArquivo = "img/noticias/" + req.file.filename;
+//       formProduto.img_produto = caminhoArquivo
+//       console.log(req.file)
+//     }
+//     try {
+//       let insert = await produtosDAL.create(formProduto);
+//       console.log(insert);
+//       res.render("pages/addproduto", {
+//         autenticado: req.session.autenticado,
+//         listaErros: null, dadosNotificacao: {
+//           titulo: "Produto Publicado!", mensagem: "Produto publicado com o id " + insert.insertId + "!", tipo: "success"
+//         }, valores: req.body
+//       })
+//     } catch (e) {
+//       res.render("pages/addproduto", {
+//         autenticado: req.session.autenticado,
+//         listaErros: erros, dadosNotificacao: {
+//           titulo: "Erro ao publicar!", mensagem: "Verifique os valores digitados!", tipo: "error"
+//         }, valores: req.body
+//       })
+//     }
+//   }
+  
+//   )
+
+router.get("/produtosadm", async function(req, res){
+  try {
+
+    let pagina = req.query.pagina == undefined ? 1 : req.query.pagina;
+      
+    inicio = parseInt(pagina - 1) * 5
+    results = await noticiaDAL.FindPage(inicio, 5);
+    totReg = await noticiaDAL.TotalReg();
+    console.log(results)
+
+    totPaginas = Math.ceil(totReg[0].total / 5);
+
+    var paginador = totReg[0].total <= 5 ? null : { "pagina_atual": pagina, "total_reg": totReg[0].total, "total_paginas": totPaginas }
+
+    console.log("auth --> ")
+    console.log(req.session.autenticado)
+    res.render("pages/produtosadm",{ noticias: results, paginador: paginador, autenticado:req.session.autenticado, login: req.res.autenticado} );
+  } catch (e) {
+    console.log(e); // console log the error so we can see it in the console
+    res.json({ erro: "Falha ao acessar dados" });
+  }    
+}
+);
+
+
 router.get("/paineladministrativo", verificarUsuAutorizado([2, 3], ("pages/restrito")), function (req, res){
   req.session.autenticado.login = req.query.login;
   res.render("pages/paineladministrativo", req.session.autenticado)
@@ -288,6 +362,46 @@ router.get("/excluir/:id", function (req, res) {
     res.redirect("/adm");
   });
   
+
+  router.post("/publicarproduto", async function(req, res){
+    if (req.session.autenticado.autenticado == null) {
+      res.render("pages/login")
+  } else {
+    const dadosComentario = {
+      nome_produto: req.body.nome_produto,
+      comentario: req.body.comentario
+    }
+  
+    const {nome_comentario, comentario} = req.body;
+  
+    if (!nome_comentario || !comentario) {
+      return res.send('Por favor, preencha todos os campos.');
+    }
+  
+    const id_comentario = uuid.v4();
+  
+    const query = 'INSERT INTO comentarios (id_comentario, nome_comentario, comentario) VALUES (?, ?, ?)';
+    const values = [id_comentario, dadosComentario.nome_comentario, dadosComentario.comentario];
+  
+    db.query(query, values, (err, result) => {
+      if (err) {
+        console.error('Erro ao inserir dados no banco de dados:', err);
+      } else {
+        console.log('Dados inseridos com sucesso!');
+      }
+    });
+  
+    setTimeout(function () {
+      res.redirect("/")
+    }, 1000); 
+  
+    console.log(dadosComentario);    
+  }
+  
+    
+  
+  
+  })
 
 
 // router.post('/formadd', (req, res) => {

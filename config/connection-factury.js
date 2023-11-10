@@ -2,11 +2,11 @@ var mysql = require("mysql");
 
 module.exports = function(){
  return mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "@ITB123456",
-    database: "starlight",
-    port: 3306
+  host: "monorail.proxy.rlwy.net",
+  user: "root",
+  password: "DGaAhcG3FfG5-Gd5dcehgCB14heA3eE5",
+  database: "railway",
+  port: 54209  
   });
 }
 

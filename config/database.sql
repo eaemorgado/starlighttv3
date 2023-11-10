@@ -26,6 +26,14 @@ CREATE TABLE usuarios (
   img_noticia varchar(100)
 );
 
+create table produtos (
+	id_produto int not null auto_increment,
+	nome_produto varchar (55),
+    valor_produto varchar (255),
+    link_produto varchar (255),
+    primary key (`id_produto`)
+);
+
 create table `tipo_usuario` (
 	id_tipo_usuario int not null auto_increment,
 	tipo_usuario varchar (25) default null,

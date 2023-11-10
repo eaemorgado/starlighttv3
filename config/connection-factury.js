@@ -6,7 +6,7 @@ module.exports = function(){
   user: "root",
   password: "DGaAhcG3FfG5-Gd5dcehgCB14heA3eE5",
   database: "railway",
-  port: 54209  
+  port: "54209"  
   });
 }
 
